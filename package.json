@@ -1,0 +1,8 @@
+{
+  "name": "react-funk-patrol",
+  "version": "1.0.0",
+  "description": "Compound React components based on Functional Programming types",
+  "main": "index.js",
+  "author": "Kyle Shevlin <kyle.a.shevlin@gmail.com> (http://kyleshevlin.com/)",
+  "license": "MIT"
+}
