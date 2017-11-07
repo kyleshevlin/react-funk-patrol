@@ -1,6 +1,6 @@
 # React Funk Patrol
 
-This is a library of Compound Components based on Functional Programming types.
+Compound Components based on functional programming types.
 
 ## What are Compound Components?
 
@@ -10,7 +10,7 @@ Glad you asked. [Check out this video of a talk given by Ryan Florence.](https:/
 
 ### Maybe
 
-`<Maybe>` takes a `value` prop. If that prop is nothing, it will render your `<Nothing />`, Otherwise it will render any children of and `<Just>` element.
+`<Maybe>` takes a `value` prop. If that prop is nothing, it will render your `<Nothing />`, Otherwise it will render any children of any `<Just>` element.
 
 #### Example
 
@@ -38,7 +38,7 @@ Glad you asked. [Check out this video of a talk given by Ryan Florence.](https:/
     <p>The condition was truthy. Hooray!</p>
   </Right>
   <Left>
-    <p>Look! When the condition is falsy, all the `<Left>`s render!</p>
+    <p>Look! When the condition is falsy, this renders, too!</p>
   </Left>
-</Maybe>
+</Either>
 ```
