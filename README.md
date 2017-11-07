@@ -10,27 +10,28 @@ Glad you asked. [Check out this video of a talk given by Ryan Florence.](https:/
 
 ### Maybe
 
-`<Maybe>` takes a `value` prop. If that prop is nothing, it will render your `<Nothing />`, Otherwise it will render any children of any `<Just>` element.
+`<Maybe>` takes a `value` prop. If that value is nothing, it will render any `<Just>`s as `null`. Otherwise, it will render the children of any `<Just>`. All other children are passed through.
 
 #### Example
 
 ```jsx
 <Maybe value={something}>
-  <Nothing />
+  <p>I will render regardless of the value.</p>
   <Just>
-    <p>I'd really like to something someday!</p>
+    <p>I will render conditionally.</p>
   </Just>
 </Maybe>
 ```
 
 ### Either
 
-`<Either>` takes a `condition` prop. If that prop is truthy, it will render all the children of any `<Right>` element. Otherwise, it will render any children of any `<Left>` element.
+`<Either>` takes a `condition` prop. If that prop is truthy, it will render all the children of any `<Right>` element. Otherwise, it will render all the children of any `<Left>` element. All other children are passed through.
 
 #### Example
 
 ```jsx
 <Either condition={something}>
+  <p>I will render regardless of the condition</p>
   <Left>
     <p>The condition was falsy.</p>
   </Left>

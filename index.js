@@ -1,20 +1,20 @@
-// Maybe :: value -> Nothing Just
-const isNothing = val => val === null || val === undefined
-const Nothing = () => null
-const Just = ({ children }) => children
+const isNothing = value => value === null || value === undefined
 
-export const Maybe = ({ children, value }) => {
-  const match = isNothing(value) ? Nothing : Just
+export const Just = ({ children }) => children
 
-  return React.Children.toArray(children).filter(child => child.type === match)
-}
+export const Maybe = ({ children, value }) =>
+  React.Children.map(
+    children,
+    child => (isNothing(value) && child.type === Just ? null : child)
+  )
 
-// Either :: condition -> Left Right
-const Left = ({ children }) => children
-const Right = ({ children }) => children
+export const Left = ({ children }) => children
+export const Right = ({ children }) => children
 
 export const Either = ({ children, condition }) => {
-  const match = condition ? Right : Left
+  const typeToRemove = condition ? Left : Right
 
-  return React.Children.toArray(children).filter(child => child.type === match)
+  return React.Children
+    .toArray(children)
+    .filter(child => child.type !== typeToRemove)
 }
