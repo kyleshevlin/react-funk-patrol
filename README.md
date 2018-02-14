@@ -28,7 +28,7 @@ The `Maybe` component takes a value and renders `children` if that value is some
 
 ### Either
 
-The `<Either>` takes a value and renders either the `left` render prop or the `right` render prop based on whether it's truthy or falsy. *Beware*, you will have to pass a predicate to `of` in order to prevent `0` from being falsy.
+The `<Either>` takes a value and renders either the `left` render prop or the `right` render prop based on whether it's truthy or falsy. *Beware*, this utilizes Boolean coercion, so `0` will result in the `left` being rendered.
 
 | Prop | Type | Purpose | Required? |
 |---|---|---|---|
