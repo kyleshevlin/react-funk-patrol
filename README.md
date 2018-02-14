@@ -1,45 +1,47 @@
 # React Funk Patrol
 
-Compound Components based on functional programming types.
-
-## What are Compound Components?
-
-Glad you asked. [Check out this video of a talk given by Ryan Florence.](https://www.youtube.com/watch?v=hEGg-3pIHlE)
+Components based on functional programming types.
 
 ## Types
 
 ### Maybe
 
-`<Maybe>` takes a `value` prop. If that value is nothing, it will render any `<Just>`s as `null`. Otherwise, it will render the children of any `<Just>`. All other children are passed through.
+The `Maybe` component takes a value and renders `children` if that value is something other than `null` or `undefined`.
+
+| Prop | Type | Purpose | Required? |
+|---|---|---|---|
+| `of` | any | `of` is given to an `isNothing` function to determine if it's either `null` or `undefined` | ✅ |
+| `nothing` | function | This is rendered when `of` is either `null` or `undefined` | |
 
 #### Example
 
 ```jsx
-<Maybe value={something}>
-  <p>I will render regardless of the value.</p>
-  <Just>
-    <p>I will render conditionally.</p>
-  </Just>
+<Maybe
+  of={something}
+  nothing={() => <p>I render if `something` is actually nothing</p>}
+>
+  <p>
+    I will render so long as `something` is not `null` or `undefined`
+  </p>
 </Maybe>
 ```
 
 ### Either
 
-`<Either>` takes a `condition` prop. If that prop is truthy, it will render all the children of any `<Right>` element. Otherwise, it will render all the children of any `<Left>` element. All other children are passed through.
+The `<Either>` takes a value and renders either the `left` render prop or the `right` render prop based on whether it's truthy or falsy. *Beware*, you will have to pass a predicate to `of` in order to prevent `0` from being falsy.
+
+| Prop | Type | Purpose | Required? |
+|---|---|---|---|
+| `of` | any | `of` is coerced into a Boolean to determine whether `left` (false) or `right` (true) is rendered | ✅ |
+| `left` | Component | rendered when `of` is falsy | |
+| `right` | Component | rendered when `of` is truthy | |
 
 #### Example
 
 ```jsx
-<Either condition={something}>
-  <p>I will render regardless of the condition</p>
-  <Left>
-    <p>The condition was falsy.</p>
-  </Left>
-  <Right>
-    <p>The condition was truthy. Hooray!</p>
-  </Right>
-  <Left>
-    <p>Look! When the condition is falsy, this renders, too!</p>
-  </Left>
-</Either>
+<Either
+  of={something}
+  left={() => <p>'Left'</p>}
+  right={() => <p>'Right'</p>}
+/>
 ```
