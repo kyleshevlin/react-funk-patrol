@@ -36,11 +36,11 @@ describe('Maybe', () => {
     expect(node.children[0]).toEqual('Nothing')
   })
 
-  it('should render the children if the something is passed', () => {
+  it('should render the something prop if the something is passed', () => {
     const node = TestRenderer
-      .create(<Maybe of={false}>Hello</Maybe>)
+      .create(<Maybe of={false} something={() => 'Something'} />)
       .toJSON()
 
-    expect(node).toEqual('Hello')
+    expect(node).toEqual('Something')
   })
 })

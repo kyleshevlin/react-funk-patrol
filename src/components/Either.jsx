@@ -1,10 +1,19 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
-const Either = ({ left, of, right }) => (of ? right() : left())
+const Either = ({ children, left, of, right }) =>
+  of ? right({ children }) : left({ children })
+
+Either.propTypes = {
+  children: PropTypes.any,
+  left: PropTypes.func,
+  of: PropTypes.any,
+  right: PropTypes.func
+}
 
 Either.defaultProps = {
-  left: () => null,
-  right: () => null
+  left: ({ children }) => null,
+  right: ({ children }) => null
 }
 
 export default Either
