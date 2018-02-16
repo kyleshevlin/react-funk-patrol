@@ -20,6 +20,12 @@ describe('Either', () => {
     expect(node).toEqual('Left')
   })
 
+  it('should render default `right` prop if `of` is truthy', () => {
+    const node = TestRenderer.create(<Either of={1} />).toJSON()
+
+    expect(node).toEqual(null)
+  })
+
   it('should render `right` if `of` is truthy', () => {
     const node = TestRenderer.create(
       <Either of={1} left={left} right={right} />

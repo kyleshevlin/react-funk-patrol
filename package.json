@@ -3,16 +3,29 @@
   "version": "0.1.0",
   "description": "React components based on Functional Programming types",
   "main": "dist/index.js",
+  "files": [
+    "dist"
+  ],
   "author": "Kyle Shevlin <kyle.a.shevlin@gmail.com> (http://kyleshevlin.com/)",
+  "repository": "git@github.com:kyleshevlin/react-funk-patrol.git",
   "license": "MIT",
   "scripts": {
+    "prebuild": "rimraf dist",
     "build": "npm-run-all --parallel build:*",
     "build:main": "babel --out-dir dist src",
     "build:umd": "webpack --output-filename index.umd.js",
     "build:umd.min": "webpack -p --output-filename index.umd.min.js",
-    "prebuild": "rimraf dist",
+    "format": "prettier --config ./.prettierrc --write \"{src,__tests__}/**/*.{js,jsx}\"",
+    "lint": "eslint ./src ./__tests__",
     "test": "jest --coverage",
-    "test:watch": "jest --watch"
+    "test:watch": "jest --watch",
+    "prevalidate": "npm run format",
+    "validate": "npm-run-all --parallel lint test build"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run validate"
+    }
   },
   "peerDependencies": {
     "react": "*"
@@ -20,12 +33,24 @@
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.0",
+    "babel-eslint": "^8.2.1",
     "babel-jest": "^22.2.2",
     "babel-loader": "^7.1.2",
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-react": "^6.24.1",
+    "eslint": "^4.17.0",
+    "eslint-config-standard": "^11.0.0-beta.0",
+    "eslint-config-standard-react": "^5.0.0",
+    "eslint-plugin-import": "^2.8.0",
+    "eslint-plugin-jest": "^21.12.1",
+    "eslint-plugin-node": "^6.0.0",
+    "eslint-plugin-promise": "^3.6.0",
+    "eslint-plugin-react": "^7.6.1",
+    "eslint-plugin-standard": "^3.0.1",
+    "husky": "^0.14.3",
     "jest": "^22.3.0",
     "npm-run-all": "^4.1.2",
+    "prettier": "^1.10.2",
     "prop-types": "^15.6.0",
     "react": "^16.2.0",
     "react-test-renderer": "^16.2.0",
