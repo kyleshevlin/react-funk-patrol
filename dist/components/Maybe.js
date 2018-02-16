@@ -8,6 +8,10 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
+var _propTypes = require('prop-types');
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
 var _utils = require('../utils');
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -15,12 +19,25 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var Maybe = function Maybe(_ref) {
   var children = _ref.children,
       nothing = _ref.nothing,
-      of = _ref.of;
-  return !(0, _utils.isNothing)(of) ? children : nothing ? nothing() : null;
+      of = _ref.of,
+      something = _ref.something;
+  return !(0, _utils.isNothing)(of) ? something({ children: children }) : nothing({ children: children });
+};
+
+Maybe.propTypes = {
+  children: _propTypes2.default.any,
+  nothing: _propTypes2.default.func,
+  of: _propTypes2.default.any,
+  something: _propTypes2.default.func
 };
 
 Maybe.defaultProps = {
-  nothing: function nothing() {
+  nothing: function nothing(_ref2) {
+    var children = _ref2.children;
+    return null;
+  },
+  something: function something(_ref3) {
+    var children = _ref3.children;
     return null;
   }
 };
