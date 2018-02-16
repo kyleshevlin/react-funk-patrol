@@ -2,6 +2,8 @@
 
 Components based on functional programming types.
 
+[![Build Status](https://travis-ci.org/kyleshevlin/react-funk-patrol.svg?branch=master)](https://travis-ci.org/kyleshevlin/react-funk-patrol)
+
 ## Types
 
 ### Maybe
