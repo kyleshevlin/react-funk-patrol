@@ -25,13 +25,25 @@ The `children` prop is passed to both `nothing` and `something`, so you can mani
 ```jsx
 <Maybe
   of={someValue}
-  nothing={() => <p>I render if `someValue` is actually nothing</p>}
-  something={() => (
-    <p>
-      I will render so long as `someValue` is not `null` or `undefined`
-    </p>
+  nothing={({ children }) => (
+    <div>
+      <p>I render if `someValue` is actually nothing</p>
+      {children}
+    </div>
   )}
-/>
+  something={({ children }) => (
+    <div>
+      <p>
+        I will render so long as `someValue` is not `null` or `undefined`
+      </p>
+      {children}
+    </div>
+  )}
+>
+  <p>
+    I am passed to `nothing` and `something` as the `children` prop.
+  </p>
+</Maybe>
 ```
 
 ### Either
@@ -51,7 +63,21 @@ The `children` prop is passed to both `left` and `right`, so you can manipulate 
 ```jsx
 <Either
   of={something}
-  left={() => <p>'Left'</p>}
-  right={() => <p>'Right'</p>}
-/>
+  left={({ children }) => (
+    <div>
+      <p>'Left'</p>
+      {children}
+    </div>
+  )}
+  right={({ children }) => (
+    <div>
+      <p>'Right'</p>
+      {children}
+    </div>
+  )}
+>
+  <p>
+    Since I am the `children`, I can be displayed regardless of whether `of` is truthy or falsy.
+  </p>
+</Either>
 ```
