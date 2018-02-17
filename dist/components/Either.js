@@ -26,12 +26,10 @@ Either.propTypes = {
 };
 
 Either.defaultProps = {
-  left: function left(_ref2) {
-    var children = _ref2.children;
+  left: function left() {
     return null;
   },
-  right: function right(_ref3) {
-    var children = _ref3.children;
+  right: function right() {
     return null;
   }
 };

@@ -28,12 +28,10 @@ Maybe.propTypes = {
 };
 
 Maybe.defaultProps = {
-  nothing: function nothing(_ref2) {
-    var children = _ref2.children;
+  nothing: function nothing() {
     return null;
   },
-  something: function something(_ref3) {
-    var children = _ref3.children;
+  something: function something() {
     return null;
   }
 };
