@@ -12,8 +12,8 @@ Maybe.propTypes = {
 }
 
 Maybe.defaultProps = {
-  nothing: ({ children }) => null,
-  something: ({ children }) => null
+  nothing: () => null,
+  something: () => null
 }
 
 export default Maybe

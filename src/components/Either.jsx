@@ -11,8 +11,8 @@ Either.propTypes = {
 }
 
 Either.defaultProps = {
-  left: ({ children }) => null,
-  right: ({ children }) => null
+  left: () => null,
+  right: () => null
 }
 
 export default Either
