@@ -23,12 +23,12 @@
     "commit": "git-cz",
     "format": "prettier --config ./.prettierrc --write \"{src,__tests__}/**/*.{js,jsx}\"",
     "lint": "eslint ./src ./__tests__",
+    "report-coverage": "cat ./coverage/lcov.info | codecov",
+    "semantic-release": "semantic-release",
     "test": "jest --coverage",
     "test:watch": "jest --watch",
-    "prevalidate": "npm run format",
-    "semantic-release": "semantic-release pre && npm publish && semantic-release post",
-    "report-coverage": "cat ./coverage/lcov.info | codecov",
     "travis-deploy-once": "travis-deploy-once",
+    "prevalidate": "npm run format",
     "validate": "npm-run-all --parallel lint test build"
   },
   "husky": {
