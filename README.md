@@ -22,7 +22,9 @@ The `children` prop is passed to both `nothing` and `something`, so you can mani
 #### Example
 
 ```jsx
-<Maybe
+import FP from 'react-funk-patrol'
+
+<FP.Maybe
   of={someValue}
   nothing={({ children }) => (
     <div>
@@ -42,7 +44,7 @@ The `children` prop is passed to both `nothing` and `something`, so you can mani
   <p>
     I am passed to `nothing` and `something` as the `children` prop.
   </p>
-</Maybe>
+</FP.Maybe>
 ```
 
 ### Either
@@ -60,7 +62,9 @@ The `children` prop is passed to both `left` and `right`, so you can manipulate 
 #### Example
 
 ```jsx
-<Either
+import FP from 'react-funk-patrol'
+
+<FP.Either
   of={something}
   left={({ children }) => (
     <div>
@@ -78,5 +82,5 @@ The `children` prop is passed to both `left` and `right`, so you can manipulate 
   <p>
     Since I am the `children`, I can be displayed regardless of whether `of` is truthy or falsy.
   </p>
-</Either>
+</FP.Either>
 ```
